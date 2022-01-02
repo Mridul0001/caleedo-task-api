@@ -8,6 +8,7 @@ import com.caleedo.api.repos.ParameterMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -31,7 +32,7 @@ public class ParamMasterServiceImpl implements ParamMasterService{
     }
 
     @Override
-    public List<ParameterThresholdModel> getAllThresholds() {
+    public HashMap<Integer,ThresholdModel> getAllThresholds() {
         return paramThresholdService.getAllThresholds();
     }
 }

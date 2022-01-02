@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -35,9 +36,9 @@ public class ParamMasterController {
     }
 
     @GetMapping("/getthersholds")
-    public ResponseEntity<List<ParameterThresholdModel>> getAllThresholds(){
+    public ResponseEntity<HashMap<Integer,ThresholdModel>> getAllThresholds(){
         try{
-            return new ResponseEntity(paramMasterService.getAllThresholds(),HttpStatus.ACCEPTED);
+            return new ResponseEntity<HashMap<Integer,ThresholdModel>>(paramMasterService.getAllThresholds(),HttpStatus.ACCEPTED);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
