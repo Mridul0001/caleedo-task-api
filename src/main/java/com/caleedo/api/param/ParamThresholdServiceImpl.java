@@ -7,6 +7,8 @@ import com.caleedo.api.repos.ParameterThresholdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParamThresholdServiceImpl implements ParamThresholdService{
     @Autowired ParameterThresholdRepository parameterThresholdRepository;
@@ -42,6 +44,11 @@ public class ParamThresholdServiceImpl implements ParamThresholdService{
         temp.setLowerValue(parameterThresholdModel.getLowerValue());
         temp.setUpperValue(parameterThresholdModel.getUpperValue());
         parameterThresholdRepository.save(temp);
+    }
+
+    @Override
+    public List<ParameterThresholdModel> getAllThresholds() {
+        return parameterThresholdRepository.findAll();
     }
 
     private void setDefaultParamValueHelper(int id,double lowerValue,double upperValue){
